@@ -35,6 +35,8 @@ class CitiesController extends AbstractController
 
     public function store()
     {
+        $this->getAuthUser();
+
         $data = $this->getValidatedData([
             'name' => 'required|string',
         ]);
@@ -48,6 +50,8 @@ class CitiesController extends AbstractController
 
     public function update(City $city)
     {
+        $this->getAuthUser();
+
         $data = $this->getValidatedData([
             'name' => 'required|string',
         ]);
@@ -61,6 +65,8 @@ class CitiesController extends AbstractController
 
     public function destroy(City $city)
     {
+        $this->getAuthUser();
+
         $city->delete();
 
         return $this->successResponseWithData();

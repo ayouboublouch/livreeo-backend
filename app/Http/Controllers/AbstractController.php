@@ -11,6 +11,11 @@ use Illuminate\Support\Collection;
 abstract class AbstractController
 {
     /**
+     * @var User
+     */
+    protected $user;
+    
+    /**
      * Respond successfully with item
      * @param array $data = []
      * 
@@ -46,10 +51,15 @@ abstract class AbstractController
      */
     public function getAuthUser(): User
     {
+        if ($this->user) {
+            return $this->user;
+        }
+        
         if (!$user = auth()->user()) {
             return $this->abortWithResponse(['status' => 'error'], Response::HTTP_UNAUTHORIZED);
         }
 
+        $this->user = $user;
         return $user;
     }
 
