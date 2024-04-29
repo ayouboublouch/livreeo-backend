@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CitiesController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -12,3 +13,5 @@ Route::group([
     Route::get('me', [AuthController::class, 'me']);
     Route::get('refresh', [AuthController::class, 'refresh']);
 });
+
+Route::apiResource('cities', CitiesController::class);
