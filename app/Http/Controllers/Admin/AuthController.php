@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\AbstractController;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
@@ -62,8 +63,14 @@ class AuthController extends AbstractController
      */
     public function refresh(): JsonResponse
     {
+        try {
+            $refreshedToken = auth()->refresh();
+        } catch (Exception) {
+            return $this->errorResponse();
+        }
+        
         return $this->successResponseWithData([
-            'token' => auth()->refresh()
+            'token' => $refreshedToken,
         ]);
     }
 }
