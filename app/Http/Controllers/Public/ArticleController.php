@@ -81,7 +81,7 @@ class ArticleController extends AbstractController
                 $query->where('category_id', $categoryId);
             }
 
-            $articles = $query->get();
+            $articles = $query->with('variants')->get();
             
             return $this->successResponseWithData(['articles' => ArticleResource::collection($articles)]);
 

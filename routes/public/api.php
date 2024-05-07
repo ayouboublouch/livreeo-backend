@@ -6,8 +6,10 @@ use App\Http\Controllers\Public\SchoolController;
 use App\Http\Controllers\Public\GroupController;
 use App\Http\Controllers\Public\ArticleController;
 use App\Http\Controllers\Public\OrderController;
+use App\Http\Controllers\Public\ShippingTypeController;
 
 
+Route::get('/shipping_types', [ShippingTypeController::class, 'index']);
 Route::get('/cities', [CityController::class, 'index']);
 Route::get('/schools/{city?}', [SchoolController::class, 'index']);
 Route::get('/groups/{school?}', [GroupController::class, 'index']);

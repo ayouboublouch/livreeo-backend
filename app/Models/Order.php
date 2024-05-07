@@ -9,12 +9,31 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tracking_number', 'status'];
+    const PLASTIFICATION_PRICE = 15;
 
-    public function articles()
+    protected $fillable = [
+        'tracking_number',
+        'status',
+        'name',
+        'phone',
+        'email',
+        'address',
+        'city',
+        'comment',
+        'shipping_type',
+        'promo_code',
+        'reduction_rate',
+    ];
+
+    public function shippingType()
     {
-        return $this->belongsToMany(Article::class, 'order_articles')
-            ->using(OrderArticle::class)
+        return $this->belongsTo(ShippingType::class, 'shipping_type');
+    }
+
+    public function variants()
+    {
+        return $this->belongsToMany(Variant::class, 'order_variants')
+            ->using(OrderVariant::class)
             ->withPivot('plastification','quantity');
 
     }
@@ -24,10 +43,10 @@ class Order extends Model
     {
         $totalPrice = 0;
 
-        foreach ($this->articles as $orderArticle) {
-            $totalPrice += $orderArticle->pivot->quantity * $orderArticle->price;
+        foreach ($this->variants as $variant) {
+            $totalPrice += $variant->pivot->quantity * ($variant->article->price + self::PLASTIFICATION_PRICE * $variant->pivot->plastification);
         }
 
-        return $totalPrice;
+        return $totalPrice * (1 - $this->reduction_rate);
     }
 }

@@ -36,7 +36,10 @@ class GroupController extends AbstractController
                 $query->whereRaw('LOWER(name) LIKE ?', ["%$keyword%"]);
             }
 
-            $groups = $query->get();
+
+            $groups = $query->with(['schoolList' => function($q){
+                $q->select(['path']);
+            }])->get();
 
             return $this->successResponseWithData(['groups' => $groups]);
         } catch (\Exception $e) {

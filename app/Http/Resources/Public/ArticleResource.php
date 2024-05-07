@@ -41,6 +41,7 @@ class ArticleResource extends JsonResource
             'status' => $this->status,
             'category' => $this->category->name ?? null,
             'image_path' => $this->image->path ?? null,
+            'variants' => $this->variants,
         ];
 
         if (isset($quantity) && $quantity !== null) {

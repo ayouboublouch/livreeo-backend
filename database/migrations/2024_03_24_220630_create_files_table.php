@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('school_id');
-            $table->unsignedBigInteger('school_list')->nullable();
-            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
-            $table->foreign('school_list')->references('id')->on('files')->onDelete('cascade');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('files');
     }
 };

@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'school_id'];
+    protected $fillable = ['name', 'school_id', 'school_list'];
 
     public function school()
     {
         return $this->belongsTo(School::class);
+    }
+
+    public function schoolList()
+    {
+        return $this->belongsTo(File::class);
     }
 
     public function articles()

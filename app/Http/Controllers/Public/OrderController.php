@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\AbstractController;
 use App\Models\Article;
+use App\Models\Variant;
 use App\Models\Order;
-use App\Models\OrderArticle;
+use App\Models\PromoCode;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
@@ -16,18 +17,49 @@ class OrderController extends AbstractController
 {
     public function store(Request $request)
     {
-        // Validate the incoming request data
+
         $validator = Validator::make($request->all(), [
-            'articles' => 'required|array',
-            'articles.*.id' => 'required|exists:articles,id',
-            'articles.*.quantity' => 'required|integer|min:1',
-            'articles.*.plastification' => 'nullable|integer|min:0',
+            'name' => 'string',
+            'phone' => 'string',
+            'email' => 'email',
+            'address' => 'required|string',
+            'city' => 'string',
+            'comment' => 'nullable|string',
+            'shipping_type' => 'required|exists:shipping_types,id',
+            'promo_code' => [
+                'nullable',
+                'string',
+                'exists:promo_codes,code'
+            ],
+            'variants' => 'required|array',
+            'variants.*.id' => 'required|exists:variants,id',
+            'variants.*.quantity' => 'required|integer|min:1',
+            'variants.*.plastification' => 'nullable|integer|min:0',
         ]);
 
         // Check if validation fails
         if ($validator->fails()) {
             return $this->errorResponse(Response::HTTP_BAD_REQUEST, ['message' => $validator->errors()->first()]);
         }
+        
+        
+        if ($request->has('promo_code')) {
+            $promoCode = PromoCode::where('code', $request->promo_code)
+            ->where('available_from', '<=', now())
+            ->where('available_to', '>=', now())
+            ->first();
+            
+            if (!$promoCode) {
+                return $this->errorResponse(Response::HTTP_BAD_REQUEST, ['message' => 'Invalid or expired promo code']);
+            }
+
+            
+            $promoCodeValue = $promoCode->code;
+            $reductionRate = $promoCode->reduction_rate;
+            
+        }
+        
+        $validatedData = $validator->validated();
 
         // Generate a unique tracking number
         $trackingNumber = base_convert(hash('sha256', uniqid(mt_rand(), true) . random_bytes(16)), 16, 36);
@@ -36,20 +68,29 @@ class OrderController extends AbstractController
         try {
             $order = Order::create([
                 'tracking_number' => $trackingNumber,
+                'name' => $validatedData['name'] ?? null,
+                'phone' => $validatedData['phone'] ?? null,
+                'email' => $validatedData['email'] ?? null,
+                'address' => $validatedData['address'] ?? null, 
+                'city' => $validatedData['city'] ?? null,
+                'comment' => $validatedData['comment'] ?? null,
+                'shipping_type' => $validatedData['shipping_type'] ?? null,
+                'promo_code' => $promoCodeValue ?? null,
+                'reduction_rate' => $reductionRate ?? 0,
             ]);
 
             // Attach articles to the order with quantity and plastification
-            foreach ($request->articles as $articleData) {
-                $article = Article::findOrFail($articleData['id']);
+            foreach ($request->variants as $variantData) {
+                $variant = Variant::findOrFail($variantData['id']);
 
-                $orderArticle = new OrderArticle([
-                    'quantity' => $articleData['quantity'],
-                    'plastification' => $articleData['plastification'] ?? 0, 
-                ]);
+                // $orderArticle = new OrderArticle([
+                //     'quantity' => $variant['quantity'],
+                //     'plastification' => $variant['plastification'] ?? 0, 
+                // ]);
 
-                $order->articles()->attach($article, [
-                    'quantity' => $orderArticle->quantity,
-                    'plastification' => $orderArticle->plastification,
+                $order->articles()->attach($variant, [
+                    'quantity' => $variantData['quantity'],
+                    'plastification' => $variantData['plastification'] ?? 0,
                     'created_at' => now(), 
                     'updated_at' => now(),
                 ]);
@@ -77,16 +118,15 @@ class OrderController extends AbstractController
         }
 
         // Load the articles relationship with pivot data
-        $order->load('articles', 'articles.image');
-        // return $order->articles;
-        // Calculate the total price of the order
+        $order->load('variants.image', 'variants.article');
+        
         $totalPrice = $order->totalPrice();
 
         // Return the order details with status, articles, and total price
         return response()->json([
             'id' => $order->id,
             'status' => $order->status,
-            'articles' => ArticleResource::collection($order->articles),
+            'variants' => $order->variants,
             'total_price' => $totalPrice,
         ]);
     }

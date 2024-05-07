@@ -20,8 +20,8 @@ return new class extends Migration
             $table->smallInteger('type');
             $table->decimal('price', 10, 2)->default(0);
             $table->smallInteger('status')->default(1);
-            $table->unsignedBigInteger('image_id');
-            $table->foreign('image_id')->references('id')->on('files')->onDelete('cascade');
+            // $table->unsignedBigInteger('image_id');
+            // $table->foreign('image_id')->references('id')->on('files')->onDelete('cascade');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

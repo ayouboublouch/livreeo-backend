@@ -20,6 +20,11 @@ class Article extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function variants()
+    {
+        return $this->hasMany(Variant::class);
+    }
+
 
     public function groups()
     {
@@ -27,11 +32,11 @@ class Article extends Model
             ->withPivot('quantity');
     }
 
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class, 'order_articles')
-            ->using(OrderArticle::class)
-            ->withPivot('quantity', 'plastification');
-    }
+    // public function orders()
+    // {
+    //     return $this->belongsToMany(Order::class, 'order_variants')
+    //         ->using(OrderVariant::class)
+    //         ->withPivot('quantity', 'plastification');
+    // }
 
 }

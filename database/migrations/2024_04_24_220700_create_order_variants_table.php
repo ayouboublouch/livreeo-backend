@@ -13,17 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order_articles', function (Blueprint $table) {
+        Schema::create('order_variants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id'); 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->unsignedBigInteger('article_id'); 
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade'); 
+            $table->unsignedBigInteger('variant_id'); 
+            $table->foreign('variant_id')->references('id')->on('variants')->onDelete('cascade'); 
             $table->smallInteger('plastification')->default(0); 
             $table->integer('quantity')->default(1); 
+
             $table->timestamps();
 
-            $table->unique(['order_id', 'article_id']);
+            $table->unique(['order_id', 'variant_id']);
         });
     }
 
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_articles');
+        Schema::dropIfExists('order_variants');
     }
 };
