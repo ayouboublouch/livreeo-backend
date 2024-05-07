@@ -22,7 +22,7 @@ return new class extends Migration
 
             // Define foreign key constraints
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-            $table->foreign('image')->references('id')->on('files')->onDelete('set null');
+            $table->foreign('image_id')->references('id')->on('files')->onDelete('set null');
         });
     }
 
