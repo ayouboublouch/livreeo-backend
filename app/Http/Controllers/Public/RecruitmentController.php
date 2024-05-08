@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\AbstractController;
+use App\Http\Resources\Public\FileResource;
 use App\Models\Recruitment;
 use App\Models\File;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class RecruitmentController extends AbstractController
         // Process the uploaded file
         $cvFile = $request->file('cv');
         if ($cvFile) {
-            $filePath = $cvFile->store('cv_files'); // Store the file in the "storage/app/cv_files" directory
+            $filePath = $cvFile->store('public'); // Store the file in the "storage/app/cv_files" directory
             $file = File::create(['path' => $filePath]);
             $cvId = $file->id;
         } else {
@@ -47,9 +48,13 @@ class RecruitmentController extends AbstractController
             $validatedData['cv'] = $cvId;
             $recruitment = Recruitment::create($validatedData);
             DB::commit();
+
+            $recruitment->cv = new FileResource($recruitment->cv()->first());
+            
             return $this->successResponseWithData(['recruitment' => $recruitment]);
             
         } catch (\Exception $e) {
+            throw $e;
             DB::rollBack();
             return $this->errorResponse(Response::HTTP_INTERNAL_SERVER_ERROR, ['message' => 'Failed to create recruitment request']);
 

@@ -24,7 +24,11 @@ class Variant extends Model
         return $this->belongsToMany(Order::class, 'order_variants')
             ->using(OrderVariant::class)
             ->withPivot('plastification','quantity');
+    }
 
+    public function image()
+    {
+        return $this->belongsTo(File::class, 'image_id');
     }
 
 }

@@ -23,7 +23,7 @@ class Recruitment extends Model
         return $this->belongsTo(Post::class);
     }
 
-    public function file()
+    public function cv()
     {
         return $this->belongsTo(File::class, 'cv');
     }

@@ -40,8 +40,7 @@ class ArticleResource extends JsonResource
             'price' => $this->price,
             'status' => $this->status,
             'category' => $this->category->name ?? null,
-            'image_path' => $this->image->path ?? null,
-            'variants' => $this->variants,
+            'variants' => VariantResource::collection($this->variants),
         ];
 
         if (isset($quantity) && $quantity !== null) {

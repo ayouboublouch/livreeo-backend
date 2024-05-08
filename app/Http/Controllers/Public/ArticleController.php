@@ -75,6 +75,13 @@ class ArticleController extends AbstractController
                 }
             }
 
+            if ($colors = $request->colors) {
+                $colors = explode(',', $colors);
+                $query->whereHas('variants', function ($q) use ($colors) {
+                    $q->whereIn('color', $colors);
+                });
+            }
+
             // Check if category_id is provided in the URL
             if ($request->has('category_id')) {
                 $categoryId = $request->input('category_id');
@@ -86,9 +93,7 @@ class ArticleController extends AbstractController
             return $this->successResponseWithData(['articles' => ArticleResource::collection($articles)]);
 
         } catch (\Exception $e) {
-
             return $this->errorResponse(Response::HTTP_INTERNAL_SERVER_ERROR, ['message' => 'An unexpected error occurred']);
-
         }
     }
 }

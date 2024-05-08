@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Public\ArticleResource;
-
+use App\Http\Resources\Public\OrderResource;
 
 class OrderController extends AbstractController
 {
@@ -48,7 +48,7 @@ class OrderController extends AbstractController
             ->where('available_from', '<=', now())
             ->where('available_to', '>=', now())
             ->first();
-            
+
             if (!$promoCode) {
                 return $this->errorResponse(Response::HTTP_BAD_REQUEST, ['message' => 'Invalid or expired promo code']);
             }
@@ -88,7 +88,7 @@ class OrderController extends AbstractController
                 //     'plastification' => $variant['plastification'] ?? 0, 
                 // ]);
 
-                $order->articles()->attach($variant, [
+                $order->variants()->attach($variant, [
                     'quantity' => $variantData['quantity'],
                     'plastification' => $variantData['plastification'] ?? 0,
                     'created_at' => now(), 
@@ -123,11 +123,8 @@ class OrderController extends AbstractController
         $totalPrice = $order->totalPrice();
 
         // Return the order details with status, articles, and total price
-        return response()->json([
-            'id' => $order->id,
-            'status' => $order->status,
-            'variants' => $order->variants,
-            'total_price' => $totalPrice,
+        return $this->successResponseWithData([
+            'order' => new OrderResource($order)
         ]);
     }
 }
