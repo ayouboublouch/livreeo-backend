@@ -1,3 +1,11 @@
+
+INSERT INTO languages (name)
+VALUES
+('french'),
+('english'),
+('arabic'),
+('spanish');
+
 INSERT INTO users (name, email, email_verified_at, password, remember_token, created_at, updated_at)
 VALUES
 ('User1', 'user1@example.com', NOW(), 'password1', 'token1', NOW(), NOW()),
@@ -68,18 +76,18 @@ VALUES
 ('School10', 10, NOW(), NOW());
 
 
-INSERT INTO groups (name, school_id, school_list, created_at, updated_at)
+INSERT INTO groups (name, school_id, school_list, language_id, created_at, updated_at)
 VALUES
-('Group1', 1, null, NOW(), NOW()),
-('Group2', 2, null, NOW(), NOW()),
-('Group3', 3, null, NOW(), NOW()),
-('Group4', 4, null, NOW(), NOW()),
-('Group5', 5, null, NOW(), NOW()),
-('Group6', 6, null, NOW(), NOW()),
-('Group7', 7, null, NOW(), NOW()),
-('Group8', 8, null, NOW(), NOW()),
-('Group9', 9, null, NOW(), NOW()),
-('Group10', 10, null, NOW(), NOW());
+('Group1', 1, null, 1, NOW(), NOW()),
+('Group2', 2, null, 3, NOW(), NOW()),
+('Group3', 3, null, 2, NOW(), NOW()),
+('Group4', 4, null, 1, NOW(), NOW()),
+('Group5', 5, null, 2, NOW(), NOW()),
+('Group6', 6, null, 2, NOW(), NOW()),
+('Group7', 7, null, 1, NOW(), NOW()),
+('Group8', 8, null, 2, NOW(), NOW()),
+('Group9', 9, null, 1, NOW(), NOW()),
+('Group10', 10, null, 3, NOW(), NOW());
 
 
 INSERT INTO categories (name, created_at, updated_at)
@@ -150,5 +158,4 @@ VALUES
 (NOW(), NOW() + INTERVAL 30 DAY, 'CODE8', 0.8, NOW(), NOW()),
 (NOW(), NOW() + INTERVAL 30 DAY, 'CODE9', 0.9, NOW(), NOW()),
 (NOW(), NOW() + INTERVAL 30 DAY, 'CODE10', 1.0, NOW(), NOW());
-
 

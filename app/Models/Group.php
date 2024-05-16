@@ -20,6 +20,11 @@ class Group extends Model
         return $this->belongsTo(File::class);
     }
 
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
     public function articles()
     {
         return $this->belongsToMany(Article::class, GroupArticle::class)

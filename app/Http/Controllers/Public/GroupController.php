@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\AbstractController;
+use App\Http\Resources\Public\GroupResource;
 use App\Models\School;
 use App\Models\Group;
 use Illuminate\Http\Request;
@@ -18,6 +19,12 @@ class GroupController extends AbstractController
         try {
             $query = Group::query();
 
+            if ($languages = request()->get('languages')) {
+                $query->whereHas('language', function ($q) use ($languages) {
+                    $q->whereIn('id', explode(',', $languages));
+                });
+            }
+            
             if ($school) {
                 $query->where('school_id', $school->id);
             }
@@ -41,7 +48,7 @@ class GroupController extends AbstractController
                 $q->select(['path']);
             }])->get();
 
-            return $this->successResponseWithData(['groups' => $groups]);
+            return $this->successResponseWithData(['groups' => GroupResource::collection($groups)]);
         } catch (\Exception $e) {
             return $this->errorResponse(Response::HTTP_INTERNAL_SERVER_ERROR, ['message' => 'An unexpected error occurred.']);
         }
