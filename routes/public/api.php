@@ -5,6 +5,7 @@ use App\Http\Controllers\Public\CityController;
 use App\Http\Controllers\Public\SchoolController;
 use App\Http\Controllers\Public\GroupController;
 use App\Http\Controllers\Public\ArticleController;
+use App\Http\Controllers\Public\CategoryController;
 use App\Http\Controllers\Public\ContactUsController;
 use App\Http\Controllers\Public\OrderController;
 use App\Http\Controllers\Public\PartnerController;
@@ -20,6 +21,7 @@ Route::get('/groups/{school?}', [GroupController::class, 'index']);
 Route::get('/articles/{group?}', [ArticleController::class, 'index']);
 Route::post('/orders', [OrderController::class, 'store']);
 Route::get('order/{tracking_number}', [OrderController::class, 'show']);
+Route::get('categories', [CategoryController::class, 'index']);
 
 Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::post('/recruitment', [RecruitmentController::class, 'store']);

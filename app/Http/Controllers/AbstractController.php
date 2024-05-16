@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Contracts\Support\MessageBag;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 abstract class AbstractController
@@ -102,5 +104,21 @@ abstract class AbstractController
         }
 
         return $validator->validated();
+    }
+
+    public function paginateQueryWithResource(Builder $query, string $resourceClassName)
+    {
+        $size = request()->input('page_size', 10);
+        $offset = request()->input('page', 0) * $size;
+            
+        return new LengthAwarePaginator(
+            $resourceClassName::collection($query->skip($offset)->take($size)->get()),
+            $query->count(),
+            $size,
+            $offset,
+            [
+                'path' => request()->url()
+            ]
+        );
     }
 }
