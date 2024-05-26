@@ -1,161 +1,97 @@
+INSERT INTO users (name, email, email_verified_at, password, remember_token, created_at, updated_at) VALUES
+('Amina Khattabi', 'amina.khattabi@example.com', '2024-01-15 10:00:00', 'hashed_password1', NULL, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Youssef El Ghazi', 'youssef.ghazi@example.com', '2024-01-16 10:00:00', 'hashed_password2', NULL, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Samira Benmoussa', 'samira.benmoussa@example.com', '2024-01-17 10:00:00', 'hashed_password3', NULL, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Karim Abdellaoui', 'karim.abdellaoui@example.com', '2024-01-18 10:00:00', 'hashed_password4', NULL, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Fatima Zahra', 'fatima.zahra@example.com', '2024-01-19 10:00:00', 'hashed_password5', NULL, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO languages (name)
-VALUES
-('french'),
-('english'),
-('arabic'),
-('spanish');
+INSERT INTO shipping_types (title, description, price, delay, created_at, updated_at) VALUES
+('Standard Shipping', 'Delivery within 5-7 business days', 30.00, 7, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Express Shipping', 'Delivery within 2-3 business days', 50.00, 3, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Same Day Delivery', 'Delivery on the same day', 80.00, 1, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Pickup Point', 'Pickup from a local point', 20.00, 5, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Free Shipping', 'Free delivery within 10 business days', 0.00, 10, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO users (name, email, email_verified_at, password, remember_token, created_at, updated_at)
-VALUES
-('User1', 'user1@example.com', NOW(), 'password1', 'token1', NOW(), NOW()),
-('User2', 'user2@example.com', NOW(), 'password2', 'token2', NOW(), NOW()),
-('User3', 'user3@example.com', NOW(), 'password3', 'token3', NOW(), NOW()),
-('User4', 'user4@example.com', NOW(), 'password4', 'token4', NOW(), NOW()),
-('User5', 'user5@example.com', NOW(), 'password5', 'token5', NOW(), NOW()),
-('User6', 'user6@example.com', NOW(), 'password6', 'token6', NOW(), NOW()),
-('User7', 'user7@example.com', NOW(), 'password7', 'token7', NOW(), NOW()),
-('User8', 'user8@example.com', NOW(), 'password8', 'token8', NOW(), NOW()),
-('User9', 'user9@example.com', NOW(), 'password9', 'token9', NOW(), NOW()),
-('User10', 'user10@example.com', NOW(), 'password10', 'token10', NOW(), NOW());
+INSERT INTO posts (name, created_at, updated_at) VALUES
+('First Post', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Second Post', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Third Post', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Fourth Post', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Fifth Post', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
+INSERT INTO files (path, created_at, updated_at) VALUES
+('/uploads/file1.pdf', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('/uploads/file2.pdf', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('/uploads/file3.pdf', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('/uploads/file4.pdf', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('/uploads/file5.pdf', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO shipping_types (title, description, price, delay, created_at, updated_at)
-VALUES
-('Standard', 'Standard shipping', 5.00, 7, NOW(), NOW()),
-('Express', 'Express shipping', 10.00, 3, NOW(), NOW()),
-('Overnight', 'Overnight shipping', 20.00, 1, NOW(), NOW()),
-('International', 'International shipping', 15.00, 14, NOW(), NOW()),
-('Local', 'Local delivery', 2.00, 1, NOW(), NOW()),
-('Pickup', 'In-store pickup', 0.00, 0, NOW(), NOW()),
-('Drone', 'Drone delivery', 30.00, 1, NOW(), NOW()),
-('Economy', 'Economy shipping', 3.00, 10, NOW(), NOW()),
-('Same-day', 'Same-day delivery', 25.00, 1, NOW(), NOW()),
-('Weekend', 'Weekend delivery', 12.00, 2, NOW(), NOW());
+INSERT INTO languages (name, created_at, updated_at) VALUES
+('Arabic', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('French', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('English', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Spanish', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Berber', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
+INSERT INTO cities (name, country, created_at, updated_at) VALUES
+('Casablanca', 'Morocco', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Rabat', 'Morocco', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Marrakech', 'Morocco', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Fes', 'Morocco', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Tangier', 'Morocco', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO posts (name, created_at, updated_at)
-VALUES
-('Post1', NOW(), NOW()),
-('Post2', NOW(), NOW()),
-('Post3', NOW(), NOW()),
-('Post4', NOW(), NOW()),
-('Post5', NOW(), NOW()),
-('Post6', NOW(), NOW()),
-('Post7', NOW(), NOW()),
-('Post8', NOW(), NOW()),
-('Post9', NOW(), NOW()),
-('Post10', NOW(), NOW());
+INSERT INTO schools (name, city_id, created_at, updated_at) VALUES
+('School 1', 1, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('School 2', 2, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('School 3', 3, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('School 4', 4, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('School 5', 5, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
+INSERT INTO groups (name, school_id, language_id, created_at, updated_at) VALUES
+('Group 1', 1, 1, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Group 2', 2, 2, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Group 3', 3, 3, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Group 4', 4, 4, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Group 5', 5, 5, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO cities (name, country, created_at, updated_at)
-VALUES
-('City1', 'Morocco', NOW(), NOW()),
-('City2', 'Morocco', NOW(), NOW()),
-('City3', 'Morocco', NOW(), NOW()),
-('City4', 'Morocco', NOW(), NOW()),
-('City5', 'Morocco', NOW(), NOW()),
-('City6', 'Morocco', NOW(), NOW()),
-('City7', 'Morocco', NOW(), NOW()),
-('City8', 'Morocco', NOW(), NOW()),
-('City9', 'Morocco', NOW(), NOW()),
-('City10', 'Morocco', NOW(), NOW());
+INSERT INTO categories (name, created_at, updated_at) VALUES
+('Category 1', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Category 2', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Category 3', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Category 4', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Category 5', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
+INSERT INTO articles (name, description, type, price, status, category_id, created_at, updated_at) VALUES
+('Article 1', 'Description for article 1', 1, 100.00, 1, 1, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Article 2', 'Description for article 2', 2, 200.00, 1, 2, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Article 3', 'Description for article 3', 1, 150.00, 1, 3, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Article 4', 'Description for article 4', 2, 250.00, 1, 4, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Article 5', 'Description for article 5', 1, 300.00, 1, 5, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO schools (name, city_id, created_at, updated_at)
-VALUES
-('School1', 1, NOW(), NOW()),
-('School2', 2, NOW(), NOW()),
-('School3', 3, NOW(), NOW()),
-('School4', 4, NOW(), NOW()),
-('School5', 5, NOW(), NOW()),
-('School6', 6, NOW(), NOW()),
-('School7', 7, NOW(), NOW()),
-('School8', 8, NOW(), NOW()),
-('School9', 9, NOW(), NOW()),
-('School10', 10, NOW(), NOW());
+INSERT INTO variants (article_id, color, image_id, status, created_at, updated_at) VALUES
+(1, 'Red', 1, 1, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+(2, 'Blue', 2, 1, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+(3, 'Green', 3, 1, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+(4, 'Yellow', 4, 1, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+(5, 'Black', 5, 1, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
+INSERT INTO group_languages (group_id, language_id, school_list, created_at, updated_at) VALUES
+(1, 1, 1, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+(2, 2, 2, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+(3, 3, 3, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+(4, 4, 4, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+(5, 5, 5, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO groups (name, school_id, school_list, language_id, created_at, updated_at)
-VALUES
-('Group1', 1, null, 1, NOW(), NOW()),
-('Group2', 2, null, 3, NOW(), NOW()),
-('Group3', 3, null, 2, NOW(), NOW()),
-('Group4', 4, null, 1, NOW(), NOW()),
-('Group5', 5, null, 2, NOW(), NOW()),
-('Group6', 6, null, 2, NOW(), NOW()),
-('Group7', 7, null, 1, NOW(), NOW()),
-('Group8', 8, null, 2, NOW(), NOW()),
-('Group9', 9, null, 1, NOW(), NOW()),
-('Group10', 10, null, 3, NOW(), NOW());
+INSERT INTO group_language_articles (article_id, group_language_id, quantity, created_at, updated_at) VALUES
+(1, 1, 10, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+(2, 2, 20, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+(3, 3, 30, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+(4, 4, 40, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+(5, 5, 50, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-
-INSERT INTO categories (name, created_at, updated_at)
-VALUES
-('Category1', NOW(), NOW()),
-('Category2', NOW(), NOW()),
-('Category3', NOW(), NOW()),
-('Category4', NOW(), NOW()),
-('Category5', NOW(), NOW()),
-('Category6', NOW(), NOW()),
-('Category7', NOW(), NOW()),
-('Category8', NOW(), NOW()),
-('Category9', NOW(), NOW()),
-('Category10', NOW(), NOW());
-
-
-INSERT INTO articles (name, description, type, price, status, category_id, created_at, updated_at)
-VALUES
-('Article1', 'Description1', 1, 10.00, 1, 1, NOW(), NOW()),
-('Article2', 'Description2', 2, 20.00, 1, 2, NOW(), NOW()),
-('Article3', 'Description3', 1, 30.00, 1, 3, NOW(), NOW()),
-('Article4', 'Description4', 2, 40.00, 1, 4, NOW(), NOW()),
-('Article5', 'Description5', 1, 50.00, 1, 5, NOW(), NOW()),
-('Article6', 'Description6', 2, 60.00, 1, 6, NOW(), NOW()),
-('Article7', 'Description7', 1, 70.00, 1, 7, NOW(), NOW()),
-('Article8', 'Description8', 2, 80.00, 1, 8, NOW(), NOW()),
-('Article9', 'Description9', 1, 90.00, 1, 9, NOW(), NOW()),
-('Article10', 'Description10', 2, 100.00, 1, 10, NOW(), NOW());
-
-
-INSERT INTO variants (article_id, color, image_id, status, created_at, updated_at)
-VALUES
-(1, 'Red', null, 1, NOW(), NOW()),
-(2, 'Blue', null, 1, NOW(), NOW()),
-(3, 'Green', null, 1, NOW(), NOW()),
-(4, 'Yellow', null, 1, NOW(), NOW()),
-(5, 'Black', null, 1, NOW(), NOW()),
-(6, 'White', null, 1, NOW(), NOW()),
-(7, 'Purple', null, 1, NOW(), NOW()),
-(8, 'Orange', null, 1, NOW(), NOW()),
-(9, 'Pink', null, 1, NOW(), NOW()),
-(10, 'Brown', null, 1, NOW(), NOW());
-
-
-INSERT INTO group_articles (group_id, article_id, quantity, created_at, updated_at)
-VALUES
-(1, 1, 1, NOW(), NOW()),
-(2, 2, 2, NOW(), NOW()),
-(3, 3, 3, NOW(), NOW()),
-(4, 4, 4, NOW(), NOW()),
-(5, 5, 5, NOW(), NOW()),
-(6, 6, 6, NOW(), NOW()),
-(7, 7, 7, NOW(), NOW()),
-(8, 8, 8, NOW(), NOW()),
-(9, 9, 9, NOW(), NOW()),
-(10, 10, 10, NOW(), NOW());
-
-
-INSERT INTO promo_codes (available_from, available_to, code, reduction_rate, created_at, updated_at)
-VALUES
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE1', 0.1, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE2', 0.2, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE3', 0.3, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE4', 0.4, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE5', 0.5, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE6', 0.6, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE7', 0.7, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE8', 0.8, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE9', 0.9, NOW(), NOW()),
-(NOW(), NOW() + INTERVAL 30 DAY, 'CODE10', 1.0, NOW(), NOW());
-
+INSERT INTO promo_codes (available_from, available_to, code, reduction_rate, created_at, updated_at) VALUES
+('2024-01-01 00:00:00', '2024-01-31 23:59:59', 'PROMO10', 0.1000, '2024-01-01 00:00:00', '2024-01-01 00:00:00'),
+('2024-02-01 00:00:00', '2024-02-28 23:59:59', 'PROMO20', 0.2000, '2024-02-01 00:00:00', '2024-02-01 00:00:00'),
+('2024-03-01 00:00:00', '2024-03-31 23:59:59', 'PROMO30', 0.3000, '2024-03-01 00:00:00', '2024-03-01 00:00:00'),
+('2024-04-01 00:00:00', '2024-04-30 23:59:59', 'PROMO40', 0.4000, '2024-04-01 00:00:00', '2024-04-01 00:00:00'),
+('2024-05-01 00:00:00', '2024-05-31 23:59:59', 'PROMO50', 0.5000, '2024-05-01 00:00:00', '2024-05-01 00:00:00');

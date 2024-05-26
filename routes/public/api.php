@@ -19,7 +19,7 @@ Route::get('/shipping-types', [ShippingTypeController::class, 'index']);
 Route::get('/cities', [CityController::class, 'index']);
 Route::get('/schools/{city?}', [SchoolController::class, 'index']);
 Route::get('/groups/{school?}', [GroupController::class, 'index']);
-Route::get('/articles/{group?}', [ArticleController::class, 'index']);
+Route::get('/articles/{groupLanguage?}', [ArticleController::class, 'index']);
 Route::post('/orders', [OrderController::class, 'store']);
 Route::get('order/{tracking_number}', [OrderController::class, 'show']);
 Route::get('categories', [CategoryController::class, 'index']);

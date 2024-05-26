@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\AbstractController;
 use App\Models\Article;
-use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Public\ArticleResource;
+use App\Models\GroupLanguage;
 use Illuminate\Http\Response;
 
 
@@ -20,7 +20,7 @@ class ArticleController extends AbstractController
         'EXTRA' => 3,
     ];
 
-    public function index(Request $request, ?Group $group = null)
+    public function index(Request $request, ?GroupLanguage $groupLanguage = null)
     {
         try {
 
@@ -41,17 +41,12 @@ class ArticleController extends AbstractController
 
             $query->where('status', 1);
 
-            // Check if group is provided in the URL
-            if ($group) {
-                $query->whereHas('groups', function ($q) use ($group) {
-                    $q->where('group_id', $group->id);
-                })->with(['groups' => function ($q) use ($group) {
-                    $q->where('group_id', $group->id)
-                        ->wherePivot('quantity', '>', 0)
-                        ->select('quantity'); 
-                }]);
+            // Check if group language is provided in the URL
+            if ($groupLanguage) {
+                $query->whereHas('groupLanguages', function ($q) use ($groupLanguage) {
+                    $q->where('group_id', $groupLanguage->id);
+                });
             }
-            
 
             // Check if keyword is provided in the URL
             if ($request->has('keyword')) {

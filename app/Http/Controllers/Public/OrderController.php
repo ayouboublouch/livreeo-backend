@@ -62,7 +62,7 @@ class OrderController extends AbstractController
         $validatedData = $validator->validated();
 
         // Generate a unique tracking number
-        $trackingNumber = base_convert(hash('sha256', uniqid(mt_rand(), true) . random_bytes(16)), 16, 36);
+        $trackingNumber = now()->year . '-' . $this->getUniqueOrderTrackingNumber();
         
         // Create the order with default status
         try {
@@ -126,5 +126,28 @@ class OrderController extends AbstractController
         return $this->successResponseWithData([
             'order' => new OrderResource($order)
         ]);
+    }
+
+    protected function getUniqueOrderTrackingNumber()
+    {
+        $len = 8;
+        
+        $base = strtoupper(
+            base_convert(
+                hash('sha256', uniqid(mt_rand(), true)
+                . random_bytes(16)),
+                16,
+                36
+            )
+        );
+
+        $keep = floor(strlen($base) / $len) * $len;
+
+        $res = '';
+        for ($i=1; $i <= $keep; $i++) { 
+            $res .= $base[$i - 1] . (($i % $len == 0) && ($i != $keep) ? '-' : '');
+        }
+
+        return $res;
     }
 }

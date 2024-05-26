@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('group_articles', function (Blueprint $table) {
+        Schema::create('group_languages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group_id'); 
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade'); 
-            $table->unsignedBigInteger('article_id'); 
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');  
-            $table->integer('quantity')->default(1);      
-            $table->timestamps();
 
-            $table->unique(['group_id', 'article_id']);
+            $table->unsignedBigInteger('group_id'); 
+            $table->unsignedBigInteger('language_id'); 
+            $table->unsignedBigInteger('school_list')->nullable();
+            
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade'); 
+            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');  
+            
+            $table->foreign('school_list')->references('id')->on('files')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_articles');
+        Schema::dropIfExists('group_languages');
     }
 };

@@ -26,9 +26,9 @@ class Article extends Model
     }
 
 
-    public function groups()
+    public function groupLanguages()
     {
-        return $this->belongsToMany(Group::class, GroupArticle::class)
+        return $this->belongsToMany(GroupLanguage::class, GroupLanguageArticle::class)
             ->withPivot('quantity');
     }
 
