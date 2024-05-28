@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\AbstractController;
+use App\Http\Resources\Public\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Response;
 
