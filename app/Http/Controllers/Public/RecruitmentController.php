@@ -49,7 +49,7 @@ class RecruitmentController extends AbstractController
             $recruitment = Recruitment::create($validatedData);
             DB::commit();
 
-            id ($recruitment->cv) {
+            if ($recruitment->cv) {
                 $recruitment->cv = new FileResource($recruitment->cv()->first());
             }
             
