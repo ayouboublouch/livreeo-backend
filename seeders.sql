@@ -12,13 +12,6 @@ INSERT INTO shipping_types (title, description, price, delay, created_at, update
 ('Pickup Point', 'Pickup from a local point', 20.00, 5, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
 ('Free Shipping', 'Free delivery within 10 business days', 0.00, 10, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO posts (name, contract_type, city_id, created_at, updated_at) VALUES
-('First Post', 'CDI', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
-('Second Post', 'CDD', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
-('Third Post', 'CDI', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
-('Fourth Post', 'CDD', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
-('Fifth Post', 'CDI', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
-
 INSERT INTO files (path, created_at, updated_at) VALUES
 ('/uploads/file1.pdf', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
 ('/uploads/file2.pdf', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
@@ -95,3 +88,10 @@ INSERT INTO promo_codes (available_from, available_to, code, reduction_rate, cre
 ('2024-03-01 00:00:00', '2024-03-31 23:59:59', 'PROMO30', 0.3000, '2024-03-01 00:00:00', '2024-03-01 00:00:00'),
 ('2024-04-01 00:00:00', '2024-04-30 23:59:59', 'PROMO40', 0.4000, '2024-04-01 00:00:00', '2024-04-01 00:00:00'),
 ('2024-05-01 00:00:00', '2024-05-31 23:59:59', 'PROMO50', 0.5000, '2024-05-01 00:00:00', '2024-05-01 00:00:00');
+
+INSERT INTO posts (name, contract_type, city_id, created_at, updated_at) VALUES
+('First Post', 'CDI', 1, '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Second Post', 'CDD', 2, '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Third Post', 'CDI', 3, '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Fourth Post', 'CDD', 4, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Fifth Post', 'CDI', 5, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
