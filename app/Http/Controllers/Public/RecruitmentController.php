@@ -49,7 +49,9 @@ class RecruitmentController extends AbstractController
             $recruitment = Recruitment::create($validatedData);
             DB::commit();
 
-            $recruitment->cv = new FileResource($recruitment->cv()->first());
+            id ($recruitment->cv) {
+                $recruitment->cv = new FileResource($recruitment->cv()->first());
+            }
             
             return $this->successResponseWithData(['recruitment' => $recruitment]);
             
