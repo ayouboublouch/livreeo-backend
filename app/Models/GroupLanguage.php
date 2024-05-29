@@ -18,6 +18,11 @@ class GroupLanguage extends Model
         return $this->belongsTo(File::class, 'school_list');
     }
 
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
     public function articles()
     {
         return $this->belongsToMany(

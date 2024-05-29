@@ -9,7 +9,7 @@ class GroupLanguageResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'name' => $this->language->name,
             'scoolList' => optional($this->schoolList)->path,
         ];
     }
