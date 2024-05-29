@@ -12,12 +12,12 @@ INSERT INTO shipping_types (title, description, price, delay, created_at, update
 ('Pickup Point', 'Pickup from a local point', 20.00, 5, '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
 ('Free Shipping', 'Free delivery within 10 business days', 0.00, 10, '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
-INSERT INTO posts (name, created_at, updated_at) VALUES
-('First Post', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
-('Second Post', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
-('Third Post', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
-('Fourth Post', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
-('Fifth Post', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
+INSERT INTO posts (name, contract_type, city_id, created_at, updated_at) VALUES
+('First Post', 'CDI', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
+('Second Post', 'CDD', '2024-01-16 10:00:00', '2024-01-16 10:00:00'),
+('Third Post', 'CDI', '2024-01-17 10:00:00', '2024-01-17 10:00:00'),
+('Fourth Post', 'CDD', '2024-01-18 10:00:00', '2024-01-18 10:00:00'),
+('Fifth Post', 'CDI', '2024-01-19 10:00:00', '2024-01-19 10:00:00');
 
 INSERT INTO files (path, created_at, updated_at) VALUES
 ('/uploads/file1.pdf', '2024-01-15 10:00:00', '2024-01-15 10:00:00'),
