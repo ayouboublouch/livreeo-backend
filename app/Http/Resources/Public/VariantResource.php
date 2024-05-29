@@ -11,7 +11,7 @@ class VariantResource extends JsonResource
         $data = [
             'id' => $this->id,
             'color' => $this->color,
-            'image' => optional($this->image)->path,
+            'image' => $this->image ? new FileResource($this->image) : null,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
