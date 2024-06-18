@@ -83,6 +83,14 @@ class ArticleController extends AbstractController
                 $query->where('category_id', $categoryId);
             }
 
+            if ($minPrice = $request->input('min_price')) {
+                $query->where('price', '>=', $minPrice);
+            }
+
+            if ($maxPrice = $request->input('max_price')) {
+                $query->where('price', '<=', $maxPrice);
+            }
+
             $articles = $query->with('variants')->get();
             
             return $this->successResponseWithData(['articles' => ArticleResource::collection($articles)]);
