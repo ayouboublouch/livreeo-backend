@@ -12,11 +12,16 @@ class PromoCodeController extends AbstractController
 {
     public function verify()
     {
-        if (!$code = PromoCode::where('code', request()->where('available_to', '>=', now())->input('code'))->first()) {
+        if (
+            !$code = PromoCode::where(
+                'code',
+                request()->input('code')
+            )->where('available_to', '>=', now())->first()
+        ) {
             return $this->errorResponse(
                 Response::HTTP_BAD_REQUEST,
                 [
-                    'message' => 'The code is not valid'
+                    'message' => 'The code is not valid or expired'
                 ]
             );
         }
