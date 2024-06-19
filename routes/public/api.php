@@ -11,6 +11,7 @@ use App\Http\Controllers\Public\LanguageController;
 use App\Http\Controllers\Public\OrderController;
 use App\Http\Controllers\Public\PartnerController;
 use App\Http\Controllers\Public\PostController;
+use App\Http\Controllers\Public\PromoCodeController;
 use App\Http\Controllers\Public\RecruitmentController;
 use App\Http\Controllers\Public\ReturnRequestController;
 use App\Http\Controllers\Public\ShippingTypeController;
@@ -26,6 +27,7 @@ Route::get('order/{tracking_number}', [OrderController::class, 'show']);
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('languages', [LanguageController::class, 'index']);
 Route::get('posts', [PostController::class, 'index']);
+Route::post('promo-codes/verify', [PromoCodeController::class, 'verify']);
 
 Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::post('/recruitment', [RecruitmentController::class, 'store']);
