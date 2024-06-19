@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\AbstractController;
+use App\Http\Resources\Public\PromoCodeResource;
 use App\Models\PromoCode;
 use Illuminate\Http\Response;
 
