@@ -12,7 +12,7 @@ class PromoCodeController extends AbstractController
 {
     public function verify()
     {
-        if (!$code = PromoCode::where('code', request()->input('code'))->first()) {
+        if (!$code = PromoCode::where('code', request()->where('available_to', '>=', now())->input('code'))->first()) {
             return $this->errorResponse(
                 Response::HTTP_BAD_REQUEST,
                 [
