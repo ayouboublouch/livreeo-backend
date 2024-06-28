@@ -24,6 +24,7 @@ Route::get('/groups/{school?}', [GroupController::class, 'index']);
 Route::get('/articles/{groupLanguage?}', [ArticleController::class, 'index']);
 Route::post('/orders', [OrderController::class, 'store']);
 Route::get('order/{tracking_number}', [OrderController::class, 'show']);
+Route::get('order/{tracking_number}/invoice', [OrderController::class, 'getInvoice']);
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('languages', [LanguageController::class, 'index']);
 Route::get('posts', [PostController::class, 'index']);

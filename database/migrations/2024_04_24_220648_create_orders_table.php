@@ -23,10 +23,18 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('comment')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('appartment_floor')->nullable();
             $table->unsignedBigInteger('shipping_type');
             $table->string('promo_code')->nullable();
             $table->decimal('reduction_rate', 5, 4)->default(0);
             $table->foreign('shipping_type')->references('id')->on('shipping_types')->onDelete('cascade');
+
+
+            $table->string('class')->nullable();
+            $table->string('school')->nullable();
+            $table->string('language')->nullable();
+            
             $table->timestamps();
         });
     }

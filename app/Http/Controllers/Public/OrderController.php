@@ -12,6 +12,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Public\ArticleResource;
 use App\Http\Resources\Public\OrderResource;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends AbstractController
 {
@@ -26,6 +27,9 @@ class OrderController extends AbstractController
             'city' => 'string',
             'comment' => 'nullable|string',
             'shipping_type' => 'required|exists:shipping_types,id',
+            'class' => 'string',
+            'school' => 'string',
+            'language' => 'string',
             'promo_code' => [
                 'nullable',
                 'string',
@@ -77,6 +81,9 @@ class OrderController extends AbstractController
                 'shipping_type' => $validatedData['shipping_type'] ?? null,
                 'promo_code' => $promoCodeValue ?? null,
                 'reduction_rate' => $reductionRate ?? 0,
+                'class' => $city ?? '',
+                'school' => $school ?? '',
+                'language' => $language ?? '',
             ]);
 
             // Attach articles to the order with quantity and plastification
@@ -136,7 +143,7 @@ class OrderController extends AbstractController
             base_convert(
                 hash('sha256', uniqid(mt_rand(), true)
                 . random_bytes(16)),
-                16,
+                10,
                 36
             )
         );
@@ -149,5 +156,30 @@ class OrderController extends AbstractController
         }
 
         return $res;
+    }
+
+    public function getInvoice($trackingNumber)
+    {
+        // Find the order by tracking number
+        $order = Order::where('tracking_number', $trackingNumber)->first();
+
+        // Check if the order exists
+        if (!$order) {
+            return $this->errorResponse(Response::HTTP_NOT_FOUND, ['message' => 'Order not found']);
+        }
+
+        return view('public.invoice', [
+            'order' => $order
+        ]);
+
+        Pdf::setOption([
+            'isRemoteEnabled' => 'true',
+        ]);
+
+        $pdf = Pdf::loadView('public.invoice', [
+            'order' => $order
+        ]);
+
+        return $pdf->download("invoice-{$order->tracking_number}.pdf");
     }
 }

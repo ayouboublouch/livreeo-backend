@@ -11,6 +11,8 @@ class Order extends Model
 
     const PLASTIFICATION_PRICE = 15;
 
+    private $totalPrice;
+    
     protected $fillable = [
         'tracking_number',
         'status',
@@ -41,12 +43,16 @@ class Order extends Model
 
     public function totalPrice()
     {
-        $totalPrice = 0;
+        if (is_null($this->totalPrice)) {
+            $totalPrice = 0;
+    
+            foreach ($this->variants as $variant) {
+                $totalPrice += $variant->pivot->quantity * ($variant->article->price + self::PLASTIFICATION_PRICE * $variant->pivot->plastification);
+            }
 
-        foreach ($this->variants as $variant) {
-            $totalPrice += $variant->pivot->quantity * ($variant->article->price + self::PLASTIFICATION_PRICE * $variant->pivot->plastification);
+            $this->totalPrice = $totalPrice * (1 - $this->reduction_rate);
         }
 
-        return $totalPrice * (1 - $this->reduction_rate);
+        return $this->totalPrice;
     }
 }
