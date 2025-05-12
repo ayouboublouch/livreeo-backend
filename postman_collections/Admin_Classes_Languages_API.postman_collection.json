@@ -1,0 +1,182 @@
+    {
+  "info": {
+    "name": "Admin Classes and Languages API",
+    "_postman_id": "admin-classes-languages-api-collection",
+    "description": "Critical-path tests for Admin Classes and Languages API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Classes - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/classes",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "classes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Classes - Create Valid",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"7ème année\", \"level\": \"Collège\", \"school_id\": 1}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/classes",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "classes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Classes - Show Valid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/classes/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "classes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Classes - Update Valid",
+      "request": {
+        "method": "PUT",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"8ème année\", \"level\": \"Collège\", \"school_id\": 1}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/classes/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "classes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Classes - Delete Valid",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/classes/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "classes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Classes - Toggle Status Valid",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/classes/1/toggle-status",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "classes", "1", "toggle-status"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Languages - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/languages",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "languages"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Languages - Create Valid",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Français\"}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/languages",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "languages"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Languages - Show Valid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/languages/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "languages", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Languages - Update Valid",
+      "request": {
+        "method": "PUT",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Anglais A1\"}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/languages/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "languages", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Languages - Delete Valid",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/languages/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "languages", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Languages - Toggle Status Valid",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/languages/1/toggle-status",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "languages", "1", "toggle-status"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "info": {
+    "name": "Admin API Combined Part 2",
+    "description": "Part 2 of combined Admin API endpoints with corrected base URL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "PromoCodes - Toggle Status Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/promo-codes/1/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "promo-codes", "1", "toggle-status"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Verify Code Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"LIVREEO2023\"}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/promo-codes/verify",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "promo-codes", "verify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Orders List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/orders?page=1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "orders"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Order by ID with Details",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/orders/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "orders", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Update Order Status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Confirmé\"\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/orders/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "orders", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete Order",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/orders/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "orders", ":id"]
+        }
+      }
+    }
+  ]
+}

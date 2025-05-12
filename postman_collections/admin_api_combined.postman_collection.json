@@ -1,0 +1,939 @@
+{
+  "info": {
+    "name": "Admin API Combined",
+    "description": "Combined Postman collection for all Admin API endpoints with real base URL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "PromoCodes - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/promo-codes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "promo-codes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Create Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"LIVREEO2023\", \"available_from\": \"2023-06-01T00:00:00Z\", \"available_to\": \"2023-06-30T23:59:59Z\", \"reduction_rate\": 0.2}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/promo-codes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "promo-codes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Show Valid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/promo-codes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "promo-codes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Update Valid",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"LIVREEO2023UPDATED\", \"available_from\": \"2023-06-01T00:00:00Z\", \"available_to\": \"2023-07-31T23:59:59Z\", \"reduction_rate\": 0.25}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/promo-codes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "promo-codes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Delete Valid",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/promo-codes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "promo-codes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Toggle Status Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/promo-codes/1/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "promo-codes", "1", "toggle-status"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Verify Code Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"LIVREEO2023\"}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/promo-codes/verify",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "promo-codes", "verify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Orders List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders?page=1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "orders"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Order by ID with Details",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "orders", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Update Order Status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Confirmé\"\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "orders", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete Order",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "orders", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Classes - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/classes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "classes"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Create Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"7ème année\", \"level\": \"Collège\", \"school_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/classes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "classes"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Show Valid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/classes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "classes", "1"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Update Valid",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"8ème année\", \"level\": \"Collège\", \"school_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/classes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "classes", "1"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Delete Valid",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/classes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "classes", "1"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Toggle Status Valid",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/classes/1/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "classes", "1", "toggle-status"]
+        }
+      }
+    },
+    {
+      "name": "Languages - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/languages",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "languages"]
+        }
+      }
+    },
+    {
+      "name": "Languages - Create Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Français\"}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/languages",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "languages"]
+        }
+      }
+    },
+    {
+      "name": "Languages - Show Valid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/languages/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "languages", "1"]
+        }
+      }
+    },
+    {
+      "name": "Languages - Update Valid",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Anglais A1\"}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/languages/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "languages", "1"]
+        }
+      }
+    },
+    {
+      "name": "Languages - Delete Valid",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/languages/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "languages", "1"]
+        }
+      }
+    },
+    {
+      "name": "Languages - Toggle Status Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/languages/1/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "languages", "1", "toggle-status"]
+        }
+      }
+    },
+    {
+      "name": "List Schools",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools"]
+        }
+      }
+    },
+    {
+      "name": "Create School - Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Test School\", \"city_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools"]
+        }
+      }
+    },
+    {
+      "name": "Create School - Invalid (missing name)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools"]
+        }
+      }
+    },
+    {
+      "name": "Show School - Valid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "1"]
+        }
+      }
+    },
+    {
+      "name": "Show School - Invalid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/999999",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "999999"]
+        }
+      }
+    },
+    {
+      "name": "Update School - Valid",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Updated School\", \"city_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update School - Invalid (duplicate name)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Existing School Name\", \"city_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete School - Valid ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete School - Invalid ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/999999",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "999999"]
+        }
+      }
+    },
+    {
+      "name": "Toggle School Status - Valid ID",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/1/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "1", "toggle-status"]
+        }
+      }
+    },
+    {
+      "name": "Toggle School Status - Invalid ID",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/schools/999999/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "schools", "999999", "toggle-status"]
+        }
+      }
+    },
+    {
+      "name": "Get Books List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/books?page=1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "books"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Book by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/books/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Create Book",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"French Literature\",\n  \"description\": \"A set of French literature books\",\n  \"type\": \"pack\",\n  \"price\": 1200.00,\n  \"status\": true,\n  \"image_id\": 1,\n  \"category_id\": 2\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/books",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "books"]
+        }
+      }
+    },
+    {
+      "name": "Update Book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"French Literature Updated\",\n  \"description\": \"Updated description\",\n  \"type\": \"pack\",\n  \"price\": 1300.00,\n  \"status\": false,\n  \"image_id\": 1,\n  \"category_id\": 2\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/books/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete Book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/books/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Get Cities List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/cities?page=1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "cities"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get City by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/cities/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "cities", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Create City",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Casablanca\",\n  \"postal_code\": \"80000\",\n  \"status\": true\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/cities",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "cities"]
+        }
+      }
+    },
+    {
+      "name": "Update City",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Rabat\",\n  \"postal_code\": \"10000\",\n  \"status\": false\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/cities/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "cities", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete City",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/cities/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "cities", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Toggle City Status",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/cities/:id/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "cities", ":id", "toggle-status"]
+        }
+      }
+    },
+    {
+      "name": "Get Categories List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/categories?page=1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "categories"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Category by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/categories/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "categories", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Create Category",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Cartable\"\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/categories",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "categories"]
+        }
+      }
+    },
+    {
+      "name": "Update Category",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Cartable Updated\"\n}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/categories/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "categories", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete Category",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/categories/:id",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "categories", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Toggle Category Status",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/categories/:id/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["api", "admin", "dashboard", "categories", ":id", "toggle-status"]
+        }
+      }
+    }
+  ]
+}

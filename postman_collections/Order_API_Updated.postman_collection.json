@@ -1,0 +1,100 @@
+{
+    "info": {
+      "name": "Order API Updated",
+      "_postman_id": "abcdef12-3456-7890-abcd-ef1234567890-updated",
+      "description": "Postman collection for testing OrderController APIs including updated show endpoint with order details",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Get Orders List",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{admin_token}}",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders?page=1",
+            "host": ["livreeo.webtrix.ma"],
+            "protocol": "https",
+            "path": ["api", "admin", "dashboard", "orders"],
+            "query": [
+              {
+                "key": "page",
+                "value": "1"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Get Order by ID with Details",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{admin_token}}",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders/:id",
+            "host": ["livreeo.webtrix.ma"],
+            "protocol": "https",
+            "path": ["api", "admin", "dashboard", "orders", ":id"]
+          }
+        }
+      },
+      {
+        "name": "Update Order Status",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{admin_token}}",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"status\": \"Confirmé\"\n}"
+          },
+          "url": {
+            "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders/:id",
+            "host": ["livreeo.webtrix.ma"],
+            "protocol": "https",
+            "path": ["api", "admin", "dashboard", "orders", ":id"]
+          }
+        }
+      },
+      {
+        "name": "Delete Order",
+        "request": {
+          "method": "DELETE",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{admin_token}}",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "https://livreeo.webtrix.ma/api/admin/dashboard/orders/:id",
+            "host": ["livreeo.webtrix.ma"],
+            "protocol": "https",
+            "path": ["api", "admin", "dashboard", "orders", ":id"]
+          }
+        }
+      }
+    ]
+  }

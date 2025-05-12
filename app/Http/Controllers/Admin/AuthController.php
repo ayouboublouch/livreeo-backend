@@ -6,6 +6,8 @@ use App\Http\Controllers\AbstractController;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends AbstractController
 {
@@ -18,13 +20,13 @@ class AuthController extends AbstractController
     {
         $credentials = request(['email', 'password']);
 
-        if (!$token = auth()->attempt($credentials)) {
+        if (!$token = Auth::guard('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->successResponseWithData([
             'token' => $token,
-            'user' => auth()->user(),
+            'user' => Auth::guard('api')->user(),
         ]);
     }
 
@@ -35,10 +37,10 @@ class AuthController extends AbstractController
      */
     public function me(): JsonResponse
     {
-        if (!$user = auth()->user()) {
+        if (!$user = Auth::guard('api')->user()) {
             return $this->errorResponse(Response::HTTP_UNAUTHORIZED);
         }
-        
+
         return $this->successResponseWithData([
             'user' => $user,
         ]);
@@ -51,7 +53,7 @@ class AuthController extends AbstractController
      */
     public function logout(): JsonResponse
     {
-        auth()->logout();
+        Auth::guard('api')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -64,13 +66,13 @@ class AuthController extends AbstractController
     public function refresh(): JsonResponse
     {
         try {
-            $refreshedToken = auth()->refresh();
+            $token = JWTAuth::refresh();
         } catch (Exception) {
             return $this->errorResponse();
         }
-        
+
         return $this->successResponseWithData([
-            'token' => $refreshedToken,
+            'token' => $token,
         ]);
     }
 }

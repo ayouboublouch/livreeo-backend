@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "Admin API Combined Part 3",
+    "description": "Part 3 of combined Admin API endpoints with corrected base URL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Classes - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/classes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "classes"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Create Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"7ème année\", \"level\": \"Collège\", \"school_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/classes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "classes"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Show Valid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/classes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "classes", "1"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Update Valid",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"8ème année\", \"level\": \"Collège\", \"school_id\": 1}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/classes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "classes", "1"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Delete Valid",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/classes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "classes", "1"]
+        }
+      }
+    },
+    {
+      "name": "Classes - Toggle Status Valid",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/dashboard/classes/1/toggle-status",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "dashboard", "classes", "1", "toggle-status"]
+        }
+      }
+    }
+  ]
+}

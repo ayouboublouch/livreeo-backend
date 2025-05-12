@@ -1,0 +1,125 @@
+{
+  "info": {
+    "name": "Admin API Combined Part 1",
+    "description": "Part 1 of combined Admin API endpoints with corrected base URL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "PromoCodes - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/promo-codes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "promo-codes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Create Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"LIVREEO2023\", \"available_from\": \"2023-06-01T00:00:00Z\", \"available_to\": \"2023-06-30T23:59:59Z\", \"reduction_rate\": 0.2}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/promo-codes",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "promo-codes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Show Valid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/promo-codes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "promo-codes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Update Valid",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"code\": \"LIVREEO2023UPDATED\", \"available_from\": \"2023-06-01T00:00:00Z\", \"available_to\": \"2023-07-31T23:59:59Z\", \"reduction_rate\": 0.25}"
+        },
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/promo-codes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "promo-codes", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PromoCodes - Delete Valid",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://livreeo.webtrix.ma/admin/promo-codes/1",
+          "host": ["livreeo.webtrix.ma"],
+          "protocol": "https",
+          "path": ["admin", "promo-codes", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

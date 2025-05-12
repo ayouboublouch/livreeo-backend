@@ -1,0 +1,189 @@
+{
+  "info": {
+    "name": "Admin School API",
+    "_postman_id": "school-api-collection",
+    "description": "Critical-path tests for Admin SchoolController API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List Schools",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create School - Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Test School\", \"city_id\": 1}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create School - Invalid (missing name)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"city_id\": 1}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Show School - Valid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Show School - Invalid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/999999",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "999999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update School - Valid",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Updated School\", \"city_id\": 1}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update School - Invalid (duplicate name)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Existing School Name\", \"city_id\": 1}"
+        },
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete School - Valid ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/1",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete School - Invalid ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/999999",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "999999"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Toggle School Status - Valid ID",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/1/toggle-status",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "1", "toggle-status"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Toggle School Status - Invalid ID",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/admin/dashboard/schools/999999/toggle-status",
+          "host": ["{{base_url}}"],
+          "path": ["admin", "dashboard", "schools", "999999", "toggle-status"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "info": {
+    "name": "Category API",
+    "_postman_id": "7890abcd-1234-efgh-5678-ijklmnopqrst",
+    "description": "Postman collection for testing CategoryController APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Categories List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/admin/dashboard/categories?page=1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "admin", "dashboard", "categories"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Category by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/admin/dashboard/categories/:id",
+          "host": ["{{base_url}}"],
+          "path": ["api", "admin", "dashboard", "categories", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Create Category",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Cartable\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/admin/dashboard/categories",
+          "host": ["{{base_url}}"],
+          "path": ["api", "admin", "dashboard", "categories"]
+        }
+      }
+    },
+    {
+      "name": "Update Category",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Cartable Updated\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/admin/dashboard/categories/:id",
+          "host": ["{{base_url}}"],
+          "path": ["api", "admin", "dashboard", "categories", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete Category",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/admin/dashboard/categories/:id",
+          "host": ["{{base_url}}"],
+          "path": ["api", "admin", "dashboard", "categories", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Toggle Category Status",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/admin/dashboard/categories/:id/toggle-status",
+          "host": ["{{base_url}}"],
+          "path": ["api", "admin", "dashboard", "categories", ":id", "toggle-status"]
+        }
+      }
+    }
+  ]
+}
