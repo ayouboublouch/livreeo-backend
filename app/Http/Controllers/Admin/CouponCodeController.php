@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Public;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\AbstractController;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Public\PromoCodeResource;
 use App\Models\PromoCode;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-
-class CouponCodeController extends AbstractController
+class CouponCodeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $promoCodes = PromoCode::orderBy('code')->paginate(10);
-        return $this->successResponseWithData(['promo_codes' => $promoCodes]);
+        return response()->json(['promo_codes' => $promoCodes]);
     }
 
     public function store(Request $request)
@@ -28,13 +27,13 @@ class CouponCodeController extends AbstractController
 
         $promoCode = PromoCode::create($validated);
 
-        return $this->successResponseWithData(['promo_code' => $promoCode], Response::HTTP_CREATED);
+        return response()->json(['promo_code' => $promoCode], Response::HTTP_CREATED);
     }
 
     public function show($id)
     {
         $promoCode = PromoCode::findOrFail($id);
-        return $this->successResponseWithData(['promo_code' => $promoCode]);
+        return response()->json(['promo_code' => $promoCode]);
     }
 
     public function update(Request $request, $id)
@@ -50,7 +49,7 @@ class CouponCodeController extends AbstractController
 
         $promoCode->update($validated);
 
-        return $this->successResponseWithData(['promo_code' => $promoCode]);
+        return response()->json(['promo_code' => $promoCode]);
     }
 
     public function destroy($id)
@@ -58,7 +57,7 @@ class CouponCodeController extends AbstractController
         $promoCode = PromoCode::findOrFail($id);
         $promoCode->delete();
 
-        return $this->successResponseWithData([], Response::HTTP_NO_CONTENT);
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 
     public function toggleStatus($id)
@@ -67,26 +66,24 @@ class CouponCodeController extends AbstractController
         $promoCode->status = !$promoCode->status;
         $promoCode->save();
 
-        return $this->successResponseWithData(['promo_code' => $promoCode]);
+        return response()->json(['promo_code' => $promoCode]);
     }
 
-    public function verify()
+    public function verify(Request $request)
     {
         if (
             !$code = PromoCode::where(
                 'code',
-                request()->input('code')
+                $request->input('code')
             )->where('available_to', '>=', now())->first()
         ) {
-            return $this->errorResponse(
-                Response::HTTP_BAD_REQUEST,
-                [
-                    'message' => 'The code is not valid or expired'
-                ]
+            return response()->json(
+                ['message' => 'The code is not valid or expired'],
+                Response::HTTP_BAD_REQUEST
             );
         }
 
-        return $this->successResponseWithData([
+        return response()->json([
             'code' => new PromoCodeResource($code),
         ]);
     }
